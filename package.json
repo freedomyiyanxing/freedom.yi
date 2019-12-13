@@ -1,9 +1,0 @@
-{
-  "name": "sports",
-  "version": "1.0.0",
-  "description": "体育资讯",
-  "main": "index.js",
-  "repository": "git@github.com:freedomyiyanxing/sports.git",
-  "author": "freedom.yi",
-  "license": "MIT"
-}
