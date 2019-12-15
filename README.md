@@ -3,6 +3,7 @@
 
 # git 提交规范
 1. 提交文字说明规范 (git commit -m '(feat | fix | docs | ...): xxx')
+
    feat：新功能
    fix：修补bug
    docs：文件
