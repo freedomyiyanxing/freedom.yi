@@ -8,7 +8,7 @@ const App: React.FC = () => {
   console.log('2222');
   return (
     <div>
-      <span>这是3331</span>
+      <span>这是11</span>
       <Home />
     </div>
   )
