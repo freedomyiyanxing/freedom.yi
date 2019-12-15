@@ -13,6 +13,11 @@
     "build:pro": "yarn run dist && cross-env webpack --config build/webpack-pro-config.js",
     "start": "node server/index.js"
   },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
   "dependencies": {
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
