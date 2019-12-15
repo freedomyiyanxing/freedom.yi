@@ -4,9 +4,9 @@
 # git 提交规范
 1. 提交文字说明规范 (git commit -m '(feat | fix | docs | ...): xxx')
 
-   feat：新功能
+   feat：增加新功能
    fix：修补bug
-   docs：文件
+   docs：新增文件
    style： 格式（不影响程序的执行）
    refactor：重置（即不是新增功能，也不是修改bug的程序变动）
    test：增加测试
