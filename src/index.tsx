@@ -8,10 +8,10 @@ const App: React.FC = () => {
   console.log('2222');
   return (
     <div>
-      <span>这是1</span>
+      <span>这是3331</span>
       <Home />
     </div>
-  );
+  )
 };
 
 ReactDOM.render(<App />, root);
