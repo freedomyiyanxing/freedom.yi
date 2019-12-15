@@ -2,6 +2,7 @@
 这是一个资讯类型项目
 
 # git 提交规范
+```
 1. 提交文字说明规范 (git commit -m '(feat | fix | docs | ...): xxx')
 
    feat：增加新功能
@@ -12,3 +13,8 @@
    test：增加测试
    chore：构建过程、辅助包 的修改
    revert: 回滚到上一个版本
+```
+ #
+ <div class="footer">
+    © 2016 ***
+ </div>
