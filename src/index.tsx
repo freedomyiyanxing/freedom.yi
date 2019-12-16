@@ -14,11 +14,11 @@ const App: React.FC = () => {
       <p>测试 合并 分支问题</p>
       <span>测试 test 分支提交1</span>
       <div>
-        eslint: 分支
+        eslint: 分支122
       </div>
       <Home />
     </div>
-  )
+  );
 };
 
 ReactDOM.render(<App />, root);

@@ -10,25 +10,24 @@ module.exports = merge(webpackBase, {
     publicPath: '/',
     filename: 'js/[name].js',
   },
-  // module: {
-  //   rules: [
-  //     {
-  //       test: /\.(ts|tsx)$/,
-  //       include: path.join(__dirname, '../src'),
-  //       exclude: path.join(__dirname, '../node_modules'),
-  //       use: [
-  //         'source-map-loader',
-  //         {
-  //           // loader: 'eslint-loader',
-  //           options: {
-  //             formatter: require('eslint-friendly-formatter'),
-  //             emitWarning: true
-  //           }
-  //         }
-  //       ]
-  //     }
-  //   ],
-  // },
+  module: {
+    rules: [
+      {
+        test: /\.(ts|tsx)$/,
+        include: path.join(__dirname, '../src'),
+        exclude: path.join(__dirname, '../node_modules'),
+        use: [
+          {
+            loader: 'eslint-loader',
+            options: {
+              formatter: require('eslint-friendly-formatter'),
+              emitWarning: true
+            }
+          }
+        ]
+      }
+    ],
+  },
   devServer: {
     host: Ip.address(),
     port: 8888,

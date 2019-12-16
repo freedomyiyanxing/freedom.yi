@@ -7,15 +7,22 @@
   "author": "freedom.yi",
   "license": "MIT",
   "scripts": {
+    "lint": "eslint src/**/*.tsx",
     "dist": "rimraf dist",
     "dll": "rimraf static && webpack --config build/webpack-dll-config.js",
     "dev": "yarn run dist && cross-env webpack-dev-server --config build/webpack-dev-config.js",
     "build:pro": "yarn run dist && cross-env webpack --config build/webpack-pro-config.js",
     "start": "node server/index.js"
   },
+  "lint-staged": {
+    "src/**/*.tsx": [
+      "eslint --fix"
+    ]
+  },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
     }
   },
   "dependencies": {
@@ -35,17 +42,31 @@
     "@types/react-router-dom": "^5.1.3",
     "@types/uuid": "^3.4.6",
     "@types/webpack": "^4.41.0",
+    "@typescript-eslint/eslint-plugin": "^2.11.0",
+    "@typescript-eslint/parser": "^2.11.0",
     "babel-loader": "^8.0.6",
     "cache-loader": "^4.1.0",
     "chalk": "^3.0.0",
     "copy-webpack-plugin": "^5.1.1",
     "cross-env": "^6.0.3",
+    "eslint": "^6.7.2",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-standard": "^14.1.0",
     "eslint-friendly-formatter": "^4.0.1",
+    "eslint-loader": "^3.0.3",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react-hooks": "1.7.0",
+    "eslint-plugin-standard": "^4.0.1",
     "express": "^4.17.1",
     "fork-ts-checker-webpack-plugin": "^3.1.1",
     "html-webpack-plugin": "^3.2.0",
     "husky": "^3.1.0",
     "ip": "^1.1.5",
+    "lint-staged": "^9.5.0",
     "thread-loader": "^2.1.3",
     "ts-loader": "^6.2.1",
     "typescript": "^3.7.3",
