@@ -16,6 +16,7 @@ const App: React.FC = () => {
       <div>
         eslint: 分支122
       </div>
+      <p>是否能阻止不符合eslint规则的提交</p>
       <Home />
     </div>
   );

@@ -16,7 +16,7 @@
   },
   "lint-staged": {
     "src/**/*.tsx": [
-      "eslint --fix"
+      "eslint"
     ]
   },
   "husky": {
