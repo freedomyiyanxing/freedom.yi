@@ -10,7 +10,8 @@
       "dom",
       "dom.iterable",
       "esnext"
-    ]
+    ],
+    "allowSyntheticDefaultImports": true
   },
   "exclude": [
     "node_modules"

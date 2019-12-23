@@ -41,6 +41,26 @@ module.exports = {
           }
         ]
       },
+      {
+        test: /\.css$/,
+        exclude: path.join(__dirname, '../node_modules'),
+        use: [
+          'style-loader',
+          'css-loader',
+        ],
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif|ico)$/,
+        exclude: path.join(__dirname, '../node_modules'), // 排除路径,
+        use: [{
+          loader: 'file-loader',
+          options: {
+            name: '[name]-[contenthash].[ext]',
+            limit: 500,
+            outputPath: 'images',
+          }
+        }]
+      },
       // {
       //   test: /\.(js|jsx)$/,
       //   include: path.join(__dirname, '../src'),

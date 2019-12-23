@@ -1,5 +1,5 @@
 const path = require('path');
-const Ip = require('ip');
+// const Ip = require('ip');
 const merge = require('webpack-merge');
 const webpackBase = require('./webpack-base-config');
 
@@ -29,7 +29,7 @@ module.exports = merge(webpackBase, {
     ],
   },
   devServer: {
-    host: Ip.address(),
+    host: '0.0.0.0',
     port: 8888,
     hot: true,
     overlay: {
