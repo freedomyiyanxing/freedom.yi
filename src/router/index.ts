@@ -10,7 +10,7 @@ export interface IRoutesItems {
   key: string,
   exact?: boolean,
   component: React.FC,
-  children?: any
+  children?: any,
 }
 
 const routers: IRoutesItems[] = [
@@ -35,4 +35,4 @@ const routers: IRoutesItems[] = [
   },
 ];
 
-export default routers;
+export default routers
