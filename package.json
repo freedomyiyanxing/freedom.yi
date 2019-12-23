@@ -15,12 +15,7 @@
     "start": "node server/index.js"
   },
   "lint-staged": {
-    "src/**/*.tsx": [
-      "eslint"
-    ],
-    "src/**/*.ts": [
-      "eslint"
-    ]
+    "src/*": "eslint"
   },
   "husky": {
     "hooks": {

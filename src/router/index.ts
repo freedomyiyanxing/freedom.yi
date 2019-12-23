@@ -35,4 +35,4 @@ const routers: IRoutesItems[] = [
   },
 ];
 
-export default routers;
+export default routers
