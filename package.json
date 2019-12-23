@@ -7,7 +7,7 @@
   "author": "freedom.yi",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint src/**/*.tsx",
+    "lint": "eslint src/**/*.tsx && eslint src/**/*.ts",
     "dist": "rimraf dist",
     "dll": "rimraf static && webpack --config build/webpack-dll-config.js",
     "dev": "yarn run dist && cross-env webpack-dev-server --config build/webpack-dev-config.js",
@@ -16,6 +16,9 @@
   },
   "lint-staged": {
     "src/**/*.tsx": [
+      "eslint"
+    ],
+    "src/**/*.ts": [
       "eslint"
     ]
   },
