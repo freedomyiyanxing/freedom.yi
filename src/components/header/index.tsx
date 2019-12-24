@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { Link, RouteComponentProps } from 'react-router-dom';
+import AppBar from '@material-ui/core/AppBar';
 import routerPath from '../../config/router-config';
 import renderRoutes from '../../router/renderRoutes';
 
 const Header: React.FC = (props: RouteComponentProps | any): React.ReactElement => {
   const { route } = props;
-  // console.log('props', props);
   return (
     <>
-      <div>
+      <AppBar>
         {
           routerPath.map((item) => (
             <Link
@@ -19,7 +19,7 @@ const Header: React.FC = (props: RouteComponentProps | any): React.ReactElement 
             </Link>
           ))
         }
-      </div>
+      </AppBar>
       <div>
         {renderRoutes(route.children)}
       </div>

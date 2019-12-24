@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const Home: React.FC = () => {
+const Home: React.FC = (): React.ReactElement => {
   console.log('111111');
   return (
     <div>

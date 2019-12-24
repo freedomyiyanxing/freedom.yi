@@ -4,8 +4,8 @@ import priceUrl from './images/price.png';
 import redEnvelopeUrl from './images/red-envelope.png';
 import './index.css';
 
-
-function Details() {
+const Details: React.FC = (): React.ReactElement => {
+  console.log('details');
   return (
     <div className="wrapper">
       <div className="content">
@@ -20,6 +20,6 @@ function Details() {
       </div>
     </div>
   );
-}
+};
 
 export default Details;
