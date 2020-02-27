@@ -1,9 +1,10 @@
 import React from 'react';
 import uuid from 'uuid';
 
-import Header from '../components/header';
-import Home from '../pages/home';
-import Details from '../pages/details';
+import Header from '@components/header';
+import Home from '@pages/home';
+import Details from '@pages/details';
+import SelectSkin from '@pages/select-skin/select-skin';
 
 export interface IRoutesItems {
   path: string,
@@ -30,6 +31,12 @@ const routers: IRoutesItems[] = [
         exact: true,
         key: uuid(),
         component: Details,
+      },
+      {
+        path: '/select-skin',
+        exact: true,
+        key: uuid(),
+        component: SelectSkin,
       },
     ],
   },

@@ -6,12 +6,40 @@
     "strict": true,
     "jsx": "react",
     "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
     ],
-    "allowSyntheticDefaultImports": true
+    "baseUrl": ".",
+    "paths": {
+      // 配置webpack 路径别名 ts文档 https://www.typescriptlang.org/docs/handbook/module-resolution.html#path-mapping
+      "@base/*": [
+        "./src/base/*"
+      ],
+      "@components/*": [
+        "./src/components/*"
+      ],
+      "@config/*": [
+        "./src/config/*"
+      ],
+      "@pages/*": [
+        "./src/pages/*"
+      ],
+      "@router/*": [
+        "./src/router/*"
+      ],
+      "@store/*": [
+        "./src/store/*"
+      ],
+      "@type/*": [
+        "./src/type/*"
+      ],
+      "@assets/*": [
+        "./src/assets/*"
+      ]
+    }
   },
   "exclude": [
     "node_modules"

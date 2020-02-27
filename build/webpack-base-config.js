@@ -15,7 +15,17 @@ module.exports = {
     path: path.join(__dirname, '../dist')
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js', '.jsx']
+    extensions: ['.tsx', '.ts', '.js', '.jsx'],
+    alias: {
+      '@base': path.join(__dirname, '../src/base'),
+      '@components': path.join(__dirname, '../src/components'),
+      '@config': path.join(__dirname, '../src/config'),
+      '@pages': path.join(__dirname, '../src/pages'),
+      '@router': path.join(__dirname, '../src/router'),
+      '@store': path.join(__dirname, '../src/store'),
+      '@type': path.join(__dirname, '../src/type'),
+      '@assets': path.join(__dirname, '../src/assets'),
+    },
   },
   module: {
     rules: [

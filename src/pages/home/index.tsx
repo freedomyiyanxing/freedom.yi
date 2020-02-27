@@ -8,7 +8,9 @@ const Home: React.FC = (): React.ReactElement => {
       <span>测试合并分支 到 master</span>
       <span>再次测试 新建分支</span>
       <p>测试 合并 分支问题</p>
-      <span>测试 test 分支提交1</span>
+      <span>
+        测试 test 分支提交1
+      </span>
       <div>
         eslint: 分支122
       </div>

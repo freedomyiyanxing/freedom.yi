@@ -18,6 +18,11 @@ const routerPath: IPath[] = [
     path: '/details',
     id: uuid(),
   },
+  {
+    text: '换皮肤',
+    path: '/select-skin',
+    id: uuid(),
+  },
 ];
 
 export default routerPath;

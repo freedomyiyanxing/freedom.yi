@@ -1,29 +1,24 @@
 import * as React from 'react';
-import { Link, RouteComponentProps } from 'react-router-dom';
-import AppBar from '@material-ui/core/AppBar';
-import routerPath from '../../config/router-config';
-import renderRoutes from '../../router/renderRoutes';
+import { RouteComponentProps } from 'react-router-dom';
+import Paper from '@material-ui/core/Paper';
+import Sidebar from '@components/sidebar/sidebar';
+import renderRoutes from '@router/renderRoutes';
+
+import useStyles from './header-css';
 
 const Header: React.FC = (props: RouteComponentProps | any): React.ReactElement => {
+  const classes = useStyles();
   const { route } = props;
+  console.log(useStyles(), '--');
   return (
-    <>
-      <AppBar>
-        {
-          routerPath.map((item) => (
-            <Link
-              key={item.id}
-              to={item.path}
-            >
-              {item.text}
-            </Link>
-          ))
-        }
-      </AppBar>
-      <div>
+    <div className={classes.container}>
+      <Paper className={classes.left} square elevation={3}>
+        <Sidebar />
+      </Paper>
+      <div className={classes.right}>
         {renderRoutes(route.children)}
       </div>
-    </>
+    </div>
   );
 };
 
