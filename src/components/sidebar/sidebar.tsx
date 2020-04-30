@@ -14,15 +14,14 @@ import { useStyles } from './style';
 
 const Sidebar: React.FC = (): React.ReactElement => {
   const classes = useStyles();
-  console.log(useStyles(), '--', themeOrange);
   return (
     <ThemeProvider theme={themeOrange}>
       <div className={classes.container}>
         <div className={classes.root}>
-          <div className={classes.navItem}>哈哈哈</div>
           {
             routerPath.map((item) => (
               <Link
+                style={{ display: 'flex' }}
                 className={classes.navItem}
                 key={item.id}
                 to={item.path}

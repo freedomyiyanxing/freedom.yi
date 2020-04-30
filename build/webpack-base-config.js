@@ -1,10 +1,8 @@
 const path = require('path');
-const Os = require('os');
 const webpack = require('webpack');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const { dllScript } = require('./config');
 
 module.exports = {
@@ -14,10 +12,12 @@ module.exports = {
   output: {
     path: path.join(__dirname, '../dist')
   },
+  externals: {
+    AMap: 'AMap'
+  },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.jsx'],
     alias: {
-      '@base': path.join(__dirname, '../src/base'),
       '@components': path.join(__dirname, '../src/components'),
       '@config': path.join(__dirname, '../src/config'),
       '@pages': path.join(__dirname, '../src/pages'),
@@ -35,13 +35,7 @@ module.exports = {
         exclude: path.join(__dirname, '../node_modules'),
         use: [
           'cache-loader', // npm -> https://www.npmjs.com/package/cache-loader
-          {
-            loader: 'thread-loader', // npm -> https://www.npmjs.com/package/thread-loader
-            options: {
-              workers: Os.cpus().length - 1,
-              poolTimeout: Infinity
-            }
-          },
+          'thread-loader', // npm -> https://www.npmjs.com/package/thread-loader
           {
             loader: 'ts-loader', // npm -> https://www.npmjs.com/package/ts-loader
             options: {
@@ -62,36 +56,24 @@ module.exports = {
       {
         test: /\.(png|jpg|jpeg|gif|ico)$/,
         exclude: path.join(__dirname, '../node_modules'), // 排除路径,
-        use: [{
-          loader: 'file-loader',
-          options: {
-            name: '[name]-[contenthash].[ext]',
-            limit: 500,
-            outputPath: 'images',
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name]-[contenthash].[ext]',
+              limit: 500,
+              outputPath: 'images',
+            }
           }
-        }]
+        ]
       },
-      // {
-      //   test: /\.(js|jsx)$/,
-      //   include: path.join(__dirname, '../src'),
-      //   exclude: path.join(__dirname, '../node_modules'),
-      //   use: [
-      //     {
-      //       loader: 'babel-loader', // https://babeljs.io/docs/en/usage
-      //       options: {
-      //         babelrc: false, // 不读取.babelrc文件
-      //         configFile: path.join(__dirname, '../babel/index.tsx') // 引用配置文件
-      //       }
-      //     }
-      //   ]
-      // }
     ]
   },
   plugins: [
     new HTMLWebpackPlugin({
       dllScript,
       filename: 'index.html',
-      title: '体育资讯',
+      title: '博客项目类',
       template: path.join(__dirname, '../public/index.html'),
       favicon: path.join(__dirname, '../public/images/favicon.ico'),
       meta: {
@@ -103,23 +85,10 @@ module.exports = {
       context: path.join(__dirname, '..'),
       manifest: require('../static/json/vendor-manifest.json')
     }),
-    new CopyWebpackPlugin([
-      {
-        from: path.join(__dirname, '../static'),
-        to: path.join(__dirname, '../dist')
-      }
-    ]),
+    new CopyWebpackPlugin([{
+      from: path.join(__dirname, '../static'),
+      to: path.join(__dirname, '../dist')
+    }]),
     new ForkTsCheckerWebpackPlugin(),
-    // new BundleAnalyzerPlugin({ // 可视化工具 http://127.0.0.1:8888
-    //   analyzerMode: 'server',
-    //   analyzerHost: '127.0.0.1',
-    //   analyzerPort: 7788,
-    //   reportFilename: 'report.html',
-    //   defaultSizes: 'parsed',
-    //   openAnalyzer: true,
-    //   generateStatsFile: false,
-    //   statsFilename: 'stats.json',
-    //   logLevel: 'info'
-    // })
   ]
 };

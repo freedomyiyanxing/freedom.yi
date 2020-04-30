@@ -1,5 +1,4 @@
 const path = require('path');
-// const Ip = require('ip');
 const merge = require('webpack-merge');
 const webpackBase = require('./webpack-base-config');
 
@@ -17,6 +16,8 @@ module.exports = merge(webpackBase, {
         include: path.join(__dirname, '../src'),
         exclude: path.join(__dirname, '../node_modules'),
         use: [
+          'cache-loader',
+          'thread-loader',
           {
             loader: 'eslint-loader',
             options: {

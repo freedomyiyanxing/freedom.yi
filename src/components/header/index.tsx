@@ -9,7 +9,6 @@ import useStyles from './header-css';
 const Header: React.FC = (props: RouteComponentProps | any): React.ReactElement => {
   const classes = useStyles();
   const { route } = props;
-  console.log(useStyles(), '--');
   return (
     <div className={classes.container}>
       <Paper className={classes.left} square elevation={3}>

@@ -15,9 +15,6 @@
     "baseUrl": ".",
     "paths": {
       // 配置webpack 路径别名 ts文档 https://www.typescriptlang.org/docs/handbook/module-resolution.html#path-mapping
-      "@base/*": [
-        "./src/base/*"
-      ],
       "@components/*": [
         "./src/components/*"
       ],

@@ -23,6 +23,16 @@ const routerPath: IPath[] = [
     path: '/select-skin',
     id: uuid(),
   },
+  {
+    text: 'Css',
+    path: '/css',
+    id: uuid(),
+  },
+  {
+    text: 'Map',
+    path: '/map',
+    id: uuid(),
+  },
 ];
 
 export default routerPath;

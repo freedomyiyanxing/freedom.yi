@@ -1,25 +1,42 @@
-import * as React from 'react';
+import React, {
+  useEffect, useRef, forwardRef,
+} from 'react';
 
-import priceUrl from './images/price.png';
-import redEnvelopeUrl from './images/red-envelope.png';
 import './index.css';
 
-const Details: React.FC = (): React.ReactElement => (
-  <div className="wrapper">
-    <div className="content">
-      <span className="bottom" />
-      <span className="imgs1">
-        <img
-          src={redEnvelopeUrl}
-          alt="121"
-        />
-        <span className="text1">悬赏</span>
-      </span>
-      <span className="mask-img">
-        <img src={priceUrl} alt="111" />
-      </span>
+interface IProps {
+  hh: string
+}
+
+const Child = forwardRef((
+  props: IProps, refs,
+) => {
+  useEffect(() => {
+    console.log('我是 child', refs, props.hh);
+  }, []);
+
+  return (
+    // @ts-ignore
+    <div ref={refs} key="aa">
+      aa
     </div>
-  </div>
-);
+  );
+});
+
+const Details: React.FC = (): React.ReactElement => {
+  const myRef = useRef();
+
+  useEffect(() => {
+    console.log(myRef.current);
+  }, []);
+
+  return (
+    <div className="wrapper">
+      <div className="content">
+        <Child ref={myRef} hh="11" />
+      </div>
+    </div>
+  );
+};
 
 export default Details;

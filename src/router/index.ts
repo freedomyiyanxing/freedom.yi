@@ -5,6 +5,8 @@ import Header from '@components/header';
 import Home from '@pages/home';
 import Details from '@pages/details';
 import SelectSkin from '@pages/select-skin/select-skin';
+import Css from '@pages/css';
+import Map from '@pages/map';
 
 export interface IRoutesItems {
   path: string,
@@ -18,25 +20,33 @@ const routers: IRoutesItems[] = [
   {
     path: '/',
     key: uuid(),
+    exact: true,
     component: Header,
     children: [
       {
         path: '/home',
-        exact: true,
         key: uuid(),
         component: Home,
       },
       {
         path: '/details',
-        exact: true,
         key: uuid(),
         component: Details,
       },
       {
         path: '/select-skin',
-        exact: true,
         key: uuid(),
         component: SelectSkin,
+      },
+      {
+        path: '/css',
+        key: uuid(),
+        component: Css,
+      },
+      {
+        path: '/map',
+        key: uuid(),
+        component: Map,
       },
     ],
   },
