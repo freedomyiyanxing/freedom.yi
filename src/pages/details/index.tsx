@@ -1,40 +1,123 @@
-import React, {
-  useEffect, useRef, forwardRef,
-} from 'react';
+import React from 'react';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Button from '@material-ui/core/Button';
+import Pagination from '@material-ui/lab/Pagination';
+
+/* eslint-disable */
 
 import './index.css';
+import { LogLevel } from 'ts-loader/dist/logger';
 
-interface IProps {
-  hh: string
-}
+const dataSource = [
+  {
+    key: '0',
+    name: '胡彦祖',
+    age: 42,
+    address: '西湖区湖底公园1号',
+  },
+  {
+    key: '1',
+    name: '易炎星',
+    age: 16,
+    address: '西湖区湖底公园2号',
+  },
+  {
+    key: '2',
+    name: '易炎星1',
+    age: 18,
+    address: '西湖区湖底公园4号',
+  },
+];
 
-const Child = forwardRef((
-  props: IProps, refs,
-) => {
-  useEffect(() => {
-    console.log('我是 child', refs, props.hh);
-  }, []);
+const Details = () => {
+  const [data, setData] = React.useState(dataSource);
 
-  return (
-    // @ts-ignore
-    <div ref={refs} key="aa">
-      aa
-    </div>
-  );
-});
+  const handleEdit = (row) => {
+    console.log(row);
+  };
 
-const Details: React.FC = (): React.ReactElement => {
-  const myRef = useRef();
+  const handleDelete = (row) => {
+    const arr = [];
+    data.forEach((item) => {
+      if (row.key !== item.key) {
+        arr.push(item);
+      }
+    });
+    setData(arr)
+  };
 
-  useEffect(() => {
-    console.log(myRef.current);
-  }, []);
+  const columns = [
+    {
+      title: '序号',
+      dataIndex: 'number',
+      key: 'number',
+    },
+    {
+      title: '姓名',
+      dataIndex: 'name',
+      key: 'name',
+    },
+    {
+      title: '年龄',
+      dataIndex: 'age',
+      key: 'age',
+    },
+    {
+      title: '住址',
+      dataIndex: 'address',
+      key: 'address',
+    },
+    {
+      title: '操作',
+      dataIndex: 'actions',
+      key: 'actions',
+      render: (row) => (
+        <div>
+          <Button onClick={() => handleEdit(row)}>修改</Button>
+          <Button onClick={() => handleDelete(row)}>删除</Button>
+        </div>
+      )
+    },
+  ];
 
+  console.log(data);
   return (
     <div className="wrapper">
-      <div className="content">
-        <Child ref={myRef} hh="11" />
-      </div>
+      <Table>
+        <TableHead>
+          <TableRow>
+            {
+              columns.map((item) => (
+                <TableCell key={item.key}>{item.title}</TableCell>
+              ))
+            }
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {
+            data.map((row, i) => (
+              <TableRow key={row.key}>
+                {
+                  columns.map((item, index) => (
+                    <TableCell key={row.key}>
+                      {
+                        typeof columns[index].render === 'function'
+                          ? columns[index].render(row)
+                          : row[columns[index].dataIndex] || i + 1
+                      }
+                    </TableCell>
+                  ))
+                }
+              </TableRow>
+            ))
+          }
+        </TableBody>
+      </Table>
+      <Pagination count={10} variant="outlined" shape="rounded" />
     </div>
   );
 };

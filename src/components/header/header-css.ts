@@ -10,6 +10,9 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
   },
   right: {
     flex: 1,
+    minHeight: '100vh',
+    display: 'flex',
+    flexDirection: 'column',
   },
   root: {
     padding: '20px 100px',
@@ -17,6 +20,20 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
   navItem: {
     flex: 1,
     fontSize: theme.typography.h4.fontSize,
+  },
+  section: {
+    flex: 1,
+  },
+  footer: {
+    flex: '0 0 30px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: theme.typography.caption.fontSize,
+    backgroundColor: 'rgba(7, 17, 27, 0.4)',
+    '& > a': {
+      color: theme.palette.common.white,
+    },
   },
 }), { name: 'header' });
 

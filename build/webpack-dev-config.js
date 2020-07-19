@@ -18,13 +18,13 @@ module.exports = merge(webpackBase, {
         use: [
           'cache-loader',
           'thread-loader',
-          {
-            loader: 'eslint-loader',
-            options: {
-              formatter: require('eslint-friendly-formatter'),
-              emitWarning: true
-            }
-          }
+          // {
+          //   loader: 'eslint-loader',
+          //   options: {
+          //     formatter: require('eslint-friendly-formatter'),
+          //     emitWarning: true
+          //   }
+          // }
         ]
       }
     ],
@@ -40,6 +40,12 @@ module.exports = merge(webpackBase, {
     contentBase: path.join(__dirname, '../dist'),
     historyApiFallback: {
       index: '/index.html'
+    },
+    proxy: {
+      '/api': {
+        target: 'http://yiyanxing.cn:8080/',
+        pathRewrite: { '^/api': '' }
+      }
     },
   }
 });

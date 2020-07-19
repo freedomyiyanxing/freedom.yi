@@ -15,7 +15,10 @@ const Header: React.FC = (props: RouteComponentProps | any): React.ReactElement 
         <Sidebar />
       </Paper>
       <div className={classes.right}>
-        {renderRoutes(route.children)}
+        <div className={classes.section}>{renderRoutes(route.children)}</div>
+        <div className={classes.footer}>
+          <a target="_blank" href="http://www.beian.gov.cn">湘ICP备20005553号</a>
+        </div>
       </div>
     </div>
   );

@@ -34,12 +34,17 @@ class DeclarationCycle extends React.Component<IProps, IState> {
 
   getSnapshotBeforeUpdate(prevProps: Readonly<IProps>, prevState: Readonly<IState>): any | null {
     console.log(prevProps, prevState, '更新后  -> getSnapshotBeforeUpdate');
+    return 'aa';
   }
 
   componentDidUpdate(
     prevProps: Readonly<IProps>, prevState: Readonly<IState>, snapshot?: any,
   ): void {
-    console.log(prevProps, prevState, '更新后  -> componentDidUpdate');
+    console.log(prevProps, prevState, snapshot, '更新后  -> componentDidUpdate');
+  }
+
+  componentWillUnmount(): void {
+    console.log('componentWillUnmount -> 组件卸载了');
   }
 
   handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -49,7 +54,7 @@ class DeclarationCycle extends React.Component<IProps, IState> {
   };
 
   render(): React.ReactElement {
-    console.log('render');
+    console.log('render  -> 返回内容');
     const { name } = this.state;
     return (
       <div>

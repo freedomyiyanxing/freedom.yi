@@ -7,6 +7,7 @@ import React, {
 } from 'react';
 import { connect } from 'react-redux';
 import { UP_DATA_NAME } from '@store/user-info/type';
+import { post, get, SUCCESS } from '@assets/js/http';
 
 interface IProps {
   user: {
@@ -32,6 +33,17 @@ const reducers = (state: number, action: any) => {
 const Home: React.FC = (props: IProps): React.ReactElement => {
   // eslint-disable-next-line no-shadow
   const { user, setNames } = props;
+
+  useEffect(() => {
+    get('/users').then((res) => {
+      // @ts-ignore
+      const { code, data } = res;
+      if (code === SUCCESS) {
+        console.log(data);
+      }
+    });
+  }, []);
+
   // console.log(props);
   // const [count, setCount] = useState<number>(0);
   // const [name, setName] = useState<string>('freedom.yi');
