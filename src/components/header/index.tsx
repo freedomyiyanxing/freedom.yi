@@ -1,12 +1,11 @@
 import * as React from 'react';
-import { RouteComponentProps } from 'react-router-dom';
 import Paper from '@material-ui/core/Paper';
 import Sidebar from '@components/sidebar/sidebar';
 import renderRoutes from '@router/renderRoutes';
 
 import useStyles from './header-css';
 
-const Header: React.FC = (props: RouteComponentProps | any): React.ReactElement => {
+const Header: React.FC<any> = (props) => {
   const classes = useStyles();
   const { route } = props;
   return (
