@@ -17,7 +17,12 @@ const renderRoutes = (routes: IRoutesItems[]) => (
                 const { location } = props;
 
                 if (location.pathname === '/') {
-                  return <Redirect to={{ pathname: '/home', state: { from: location } }} />;
+                  return <Redirect
+                    to={{
+                      pathname: '/home',
+                      state: { from: location }
+                    }}
+                  />;
                 }
 
                 return <items.component {...props} route={items} />;
