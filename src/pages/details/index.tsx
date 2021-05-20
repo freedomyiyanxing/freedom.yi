@@ -10,7 +10,6 @@ import Pagination from '@material-ui/lab/Pagination';
 /* eslint-disable */
 
 import './index.css';
-import { LogLevel } from 'ts-loader/dist/logger';
 
 const dataSource = [
   {
@@ -36,12 +35,12 @@ const dataSource = [
 const Details = () => {
   const [data, setData] = React.useState(dataSource);
 
-  const handleEdit = (row) => {
+  const handleEdit = (row: any) => {
     console.log(row);
   };
 
-  const handleDelete = (row) => {
-    const arr = [];
+  const handleDelete = (row: { key: string; }) => {
+    const arr: any = [];
     data.forEach((item) => {
       if (row.key !== item.key) {
         arr.push(item);
@@ -75,7 +74,7 @@ const Details = () => {
       title: '操作',
       dataIndex: 'actions',
       key: 'actions',
-      render: (row) => (
+      render: (row: any) => (
         <div>
           <Button onClick={() => handleEdit(row)}>修改</Button>
           <Button onClick={() => handleDelete(row)}>删除</Button>
@@ -106,8 +105,8 @@ const Details = () => {
                     <TableCell key={row.key}>
                       {
                         typeof columns[index].render === 'function'
-                          ? columns[index].render(row)
-                          : row[columns[index].dataIndex] || i + 1
+                          ? (columns as any)[index].render(row)
+                          : (row as any)[columns[index].dataIndex] || i + 1
                       }
                     </TableCell>
                   ))
